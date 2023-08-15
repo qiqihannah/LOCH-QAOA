@@ -10,7 +10,8 @@ It also contains the original results reported in the paper and the analysing co
 
 * Folder *Data* contains the information of 4 industrial datasets, including all the test cases and their attribute values.
 * Folder *Code* contains the code of LOCH-QAOA, Div-QAOA, and two classical algorithms, random search and genetic algorithm.
-* Folder *Experiment Results* contains results of experiment in the paper.
+* Folder *Analyse* contains the code of analysing the experiments and results.
+* Zip file *Experiment Results* contains results of experiment in the paper.
     * subfolder *LOCH-QAOA-result*: each folder under it is named by qaoa_p (i.e., layers of QAOA). which contains results of 5 case studies stored in .zip files. 
       * The .zip files contain experiment results of all 10 runs of LOCH-QAOA with different sizes. In each run, we report results of each iteration, log information of each sub-problem and the final solution.
      * subfolder *Div-QAOA-result*: it contains experiment results of all 5 case studies. 

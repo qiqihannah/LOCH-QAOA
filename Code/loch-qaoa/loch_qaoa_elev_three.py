@@ -90,21 +90,6 @@ class TestCaseOptimizationThree(OptimizationApplication):
         obj_cost = pow(obj_cost / cost_sum, 2)
         obj_pcount = pow((obj_pcount - pcount_sum) / pcount_sum, 2)
         obj_dist = pow((obj_dist - dist_sum) / dist_sum, 2)
-        #         print("time:",obj_time)
-        #         print("rate:",obj_rate)
-        #         print("num:",obj_num)
-
-        #         obj_time = sum(self._times[i] * x[i] for i in x)
-        #         obj_time = pow(obj_time/time_sum, 2)
-
-        #         if rate_sum == 0:
-        #             obj_fr = 0
-        #             obj_fr = 0
-        #         else:
-        #             obj_fr = sum(self._frs[i] * x[i] for i in x)
-        #             obj_fr = pow((obj_fr-rate_sum)/rate_sum, 2)
-
-        #         obj_num = pow(sum(x[i] for i in x)/len(self._times), 2)
 
         obj = self._w1 * obj_cost + self._w2 * obj_pcount + self._w3 * obj_dist
 
@@ -154,14 +139,7 @@ def print_diet(sample,data):
             cost_list.append(data.iloc[t]['cost'])
             pcount_list.append(data.iloc[t]['pcount'])
             dist_list.append(data.iloc[t]['dist'])
-            # print(t[1:]+'. ',end=' ')
-            # print('time: '+str(foods[t]['time']), end=', ')
-            # print('rate: '+str(foods[t]['rate']), end='\n')
     fval = (1 / 3) * pow(sum(cost_list) / sum(data['cost']), 2) + (1 / 3) * pow((sum(pcount_list) - sum(data["pcount"])) / (sum(data["pcount"])), 2) + (1 / 3) * pow((sum(dist_list) - sum(data['dist'])) / (sum(data["dist"])), 2)
-    # print("Total time: " + str(total_time))
-    # print("Total rate: " + str(total_rate))
-#     print("Fval value:" + str(fval))
-#     print("Number: "+str(count))
     return fval
 
 def OrderByImpact(best_solution, df, best_energy):
@@ -200,8 +178,6 @@ def OrderByImpactNum(best_solution, df, best_energy):
     cost_sum = sum(cost_array)
     pcount_sum = sum(pcount_array)
     dist_sum = sum(dist_array)
-    # time_sum_con = np.full((len(best_solution), 1), time_sum)
-    # rate_sum_con = np.full((len(best_solution), 1), rate_sum)
     cost_obj = matrix.dot(cost_matrix)
     pcount_obj = matrix.dot(pcount_matrix) - pcount_sum
     dist_obj = matrix.dot(dist_matrix) - dist_sum
@@ -225,6 +201,11 @@ def run_alg(qubo, reps):
     quantum_instance = QuantumInstance(backend)
     qaoa_mes = QAOA(quantum_instance=quantum_instance, optimizer=optimizer, include_custom=True, reps=reps)
     qaoa = MinimumEigenOptimizer(qaoa_mes)
+    op, offset = qubo.to_ising()
+    # Ising formulation
+    print("offset: {}".format(offset))
+    print("Ising Hamiltonian:")
+    print(op)
     begin = time.time()
     qaoa_result = qaoa.solve(qubo)
     end = time.time()

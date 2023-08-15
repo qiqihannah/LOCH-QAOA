@@ -8,14 +8,12 @@ from scipy import stats
 import seaborn as sns
 
 def get_value(num, feature, file, size):
-    root = "qaoa_1/" + file + "/" + "size_" + str(size)+ "/"+ str(num) + "/itr_results.csv"
+    root = "LOCH-QAOA-result/qaoa_1/" + file + "/" + "size_" + str(size)+ "/"+ str(num) + "/itr_results.csv"
     df = pd.read_csv(root)
     return list(df[feature])
 
 def get_log_value(num, feature, file, size):
-    if file == "elevator":
-        file = "elevator_one"
-    root = "qaoa_1/" + file + "/" + "size_" + str(size)+ "/"+ str(num) + "/log.csv"
+    root = "LOCH-QAOA-result/qaoa_1/" + file + "/" + "size_" + str(size)+ "/"+ str(num) + "/log.csv"
     df = pd.read_csv(root)
     return list(df[feature])
 
@@ -36,7 +34,7 @@ def find_first_non_decreasing_point(lst):
     return None  # Return None if such index is not found
 
 def get_optimal(feature, file, size):
-    root = "qaoa_1/" + file + "/" + "size_" + str(size) + "/"+ "/optimal.csv"
+    root = "LOCH-QAOA-result/qaoa_1/" + file + "/" + "size_" + str(size) + "/"+ "/optimal.csv"
     df = pd.read_csv(root)
     return list(df[feature])
 
@@ -92,7 +90,7 @@ if __name__ == '__main__':
             data_dic["percentage"] = percentage_list
 
             df = pd.DataFrame(data_dic)
-            df.to_csv("qaoa_1/" + file + "/size_"+str(size)+"/"+"optimal.csv")
+            df.to_csv("LOCH-QAOA-result/qaoa_1/" + file + "/size_"+str(size)+"/"+"optimal.csv")
 
     # executing time
     files = ["paintcontrol", "iofrol", "gsdtsr", "elevator_two", "elevator_one"]
@@ -169,15 +167,13 @@ if __name__ == '__main__':
             plt.xticks(range(1, max_x + 1), fontsize=15)
             plt.yticks(fontsize=16)
 
-        plt.savefig("qaoa_1/graph/"+file+"_trend.png", dpi=300,bbox_inches='tight')
+        plt.savefig("LOCH-QAOA-result/qaoa_1/graph/"+file+"_trend.png", dpi=300,bbox_inches='tight')
         plt.clf()
 
-    # kruskal test
+    # kruskal test for different sub-problem sizes
     files = ["paintcontrol", "iofrol", "gsdtsr", "elevator_two", "elevator_one"]
     feature = "best_fval"
     sizes = [7, 8, 10, 12, 14, 16]
-    # reps = [1,2,4,8,16]
-    # reps = [1,2,4,8,16]
     for file in files:
         data_list = [[] for _ in range(len(sizes))]
         for j in range(len(sizes)):
@@ -193,7 +189,6 @@ if __name__ == '__main__':
         except:
             print("wrong")
 
-    # elevator two: 10; gsdtsr: 12
     for file_id in range(len(files)):
         feature = "best_fval"
         pvalue_list = [[0 for _ in range(len(sizes))] for _ in range(len(sizes))]
