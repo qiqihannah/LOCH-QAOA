@@ -73,14 +73,14 @@ In order to run two case studies related to ELEVATOR, we can run the file loch_q
 To run GA, you can run the following code:
 
 ```
-python ga.py [n] [max_evaluation] [file name]
+python ga.py [run] [popsize] [file name]
 ```
 Specially, to run two case studies related to ELEVATOR, the "file name" is "elevator_two" and "elevator_three".
 
 Similarly, you can run RS with
 
 ```
-python rs.py [n] [max_evaluation] [file name]
+python rs.py [run] [file name]
 ```
 
 ## Experiment results are saved in [this link](https://drive.google.com/drive/folders/1zvqdwVx5RZeVq1ljI7EoywKN5bWV9BI7?usp=drive_link).
