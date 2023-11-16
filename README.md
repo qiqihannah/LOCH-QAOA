@@ -8,25 +8,27 @@ In the near term, quantum approximate optimization algorithms (QAOAs) hold great
 
 This repository contains four industrial datasets and the code for producing results of running LOCH-QAOA and baseline approaches for TCO problems.
 
-It also contains the original results reported in the paper and the analysing code.
+It also contains the original results reported in the paper and the analyzing code.
 
 ## Structure of the repository
 
 * Folder *Data* contains the information of 4 industrial datasets, including all the test cases and their attribute values.
 * Folder *Code* contains the code of LOCH-QAOA, Div-QAOA, and two classical algorithms, random search and genetic algorithm.
 * Folder *Analyse* contains the code of analysing the experiments and results.
-* Zip file *Experiment Results* contains results of experiment in the paper.
+* Experiment results in the paper are saved in [this link](https://drive.google.com/drive/folders/1zvqdwVx5RZeVq1ljI7EoywKN5bWV9BI7?usp=drive_link).
     * subfolder *LOCH-QAOA-result*: each folder under it is named by qaoa_p (i.e., layers of QAOA). which contains results of 5 case studies stored in .zip files. 
       * The .zip files contain experiment results of all 10 runs of LOCH-QAOA with different sizes. In each run, we report results of each iteration, log information of each sub-problem and the final solution.
      * subfolder *Div-QAOA-result*: it contains experiment results of all 5 case studies. 
       * The subfolders under contain experiment results of all 10 runs. We report the information of each sub-problem and their optimal solution.
-    * subfolder *GA-result*: it contains the experiment results of all 5 case studies, together with their optimal solutions in the .csv file.
-      * The .zip files contain experiment results of each generation in all 10 runs.
+    * subfolder *GA-result*: it contains the experiment results of all 5 case studies. 
+      * dataset_log folder contains the evolution results of each generation with various population sizes (i.e., 10, 20, 30, 40, 50, 60, 70, 80, 90, 100) and their corresponding optimal fitness values, execution time, and number of evaluations of each run (in gen_file_popsize.csv).
+      * dataset.csv file contains the average results of various population sizes.
+      * selected.csv file contains the average results with the optimal population sizes of each case study.
     * subfolder *RandomSearch-results*: it contains the results of all 5 case studies.
-      * The subfolders under contain experiment results of all 10 runs. We report the best recorded *fval* values eachieved in each iteration in that run.
+      * The subfolders contain the experiment results of all 10 runs. We report the best recorded *fval* values eachieved in each iteration in that run.
 
 ## Installation of running the code
-We use [Qiskit](https://qiskit.org/) as quantum framework. We use jMetalPy to implement the classical search algorithms (i.e., GA and RandomSearch)
+We use [Qiskit](https://qiskit.org/) as a quantum framework. We use jMetalPy to implement the classical search algorithms (i.e., GA and RandomSearch)
 
 The following steps should guarantee to have a working installation:
 * Install Anaconda. You can download Anaconda for your OS from [https://www.anaconda.com/](https://www.anaconda.com/)
@@ -81,5 +83,4 @@ Similarly, you can run RS with
 python rs.py [n] [max_evaluation] [file name]
 ```
 
-## Experiment results are stored in the following link
-[https://drive.google.com/file/d/1ODGVamT6xpWkgMgH3YZvYgrIO07fgXoq/view?usp=drive_link](https://drive.google.com/drive/folders/1zvqdwVx5RZeVq1ljI7EoywKN5bWV9BI7?usp=drive_link)https://drive.google.com/drive/folders/1zvqdwVx5RZeVq1ljI7EoywKN5bWV9BI7?usp=drive_link
+## Experiment results are saved in [this link](https://drive.google.com/drive/folders/1zvqdwVx5RZeVq1ljI7EoywKN5bWV9BI7?usp=drive_link).
