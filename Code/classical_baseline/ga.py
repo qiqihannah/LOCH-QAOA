@@ -6,27 +6,19 @@ from TestingProblem import TCO
 import pandas as pd
 from jmetal.algorithm.singleobjective.genetic_algorithm import GeneticAlgorithm
 from jmetal.operator import BitFlipMutation, SPXCrossover
-from jmetal.problem import OneMax
-from jmetal.util.observer import PrintObjectivesObserver, BasicObserver
 from jmetal.util.termination_criterion import StoppingByEvaluations
-from TestingProblem import OneMax1
 import argparse
 from CustomObserver import CuBasicObserver
 import os
-import random
 
 parser = argparse.ArgumentParser()
 parser.add_argument('n', type=int)
 parser.add_argument('p', type=int)
 parser.add_argument('name',type=str)
-parser.add_argument('mu', type=float)
-parser.add_argument('cross', type=float)
 args = parser.parse_args()
 num_experiment = args.n
 population_size = args.p
 file_name = args.name
-mu = args.mu
-crossover = args.cross
 
 if file_name == "elevator_two":
         df = pd.read_csv("../data/"+"elevator"+".csv")
@@ -58,10 +50,10 @@ elif file_name == "gsdtsr":
         max_evaluation = 400000
 algorithm = GeneticAlgorithm(
         problem=problem,
-        population_size=population_size,#40
-        offspring_population_size=population_size,#40
-        mutation=BitFlipMutation((1.0 / problem.number_of_bits)*mu),
-        crossover=SPXCrossover(crossover),
+        population_size=population_size,
+        offspring_population_size=population_size,
+        mutation=BitFlipMutation(1.0 / problem.number_of_bits),
+        crossover=SPXCrossover(1.0),
         termination_criterion=StoppingByEvaluations(max_evaluations=max_evaluation),
     )
 
