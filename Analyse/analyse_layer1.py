@@ -55,7 +55,27 @@ def stat_test(app1, app2):
     a12_effect_size = a12(app1, app2)
     return statistic, pvalue, a12_effect_size
 
+def get_baseline_ga_value(feature, file_name, pop_size):# get 10 the value in solution.csv of reps, file_name and size
+    value_list = []
+    try:
+        root = "GA-result/"+file_name+"/gen_file_"+str(pop_size)+".csv"
+        df = pd.read_csv(root)
+        value_list=list(df[feature])
+    except:
+        print("wrong!")
+    return value_list
 
+def get_RS_value(feature, file):
+    rfval_list = []
+    for num in range(10):
+        root = "RandomSearch-result" + "/" + file + "/" + str(num) + "/evolution_data.csv"
+        df = pd.read_csv(root)
+        rs_list = list(df[feature])
+        f_raw = []
+        for value in rs_list:
+            f_raw.append(float(value.strip('[').strip(']')))
+        rfval_list.append(min(f_raw))
+    return rfval_list
 
 if __name__ == '__main__':
     # gengerating optimal files
@@ -220,3 +240,53 @@ if __name__ == '__main__':
         ax.set_yticklabels(sizes)
         plt.show()
         plt.clf()
+
+    # statistical test for loch-qaoa and RS
+    files = ["paintcontrol", "iofrol", "gsdtsr", "elevator_two", "elevator_one"]
+    optimals = [0.1408811904392036, 0.0966991237130090, 0.003558040347176, 0.06892904413900895, 0.10237206500324063]
+    size = 7
+    pop_index = [10,70,10,40,10]
+    dic_dwave = {}
+    for i in range(len(files)):
+        file = files[i]
+        fval_list = get_solution_value("best_fval", 1, file, 7)
+        fval_list = [round(fval_list[_],15)/round(optimals[i],15) for _ in range(len(fval_list))]
+        dic_dwave[file] = fval_list
+    dic_baseline = {}
+    for i in range(len(files)):
+        file = files[i]
+        fval_list = get_RS_value("Fitness Value", file)
+        fval_list = [round(fval_list[_],15) / round(optimals[i],15) for _ in range(len(fval_list))]
+        dic_baseline[file] = fval_list
+    for i in range(len(files)):
+        print(files[i])
+        data1 = dic_dwave[files[i]]
+        data2 = dic_baseline[files[i]]
+        statistic, pvalue, a12_effect_size = stat_test(data1, data2)
+        print(pvalue)
+        print(a12_effect_size)
+
+    # statistical test for loch-qaoa and GA
+    files = ["paintcontrol", "iofrol", "gsdtsr", "elevator_two", "elevator_one"]
+    optimals = [0.1408811904392036, 0.0966991237130090, 0.003558040347176, 0.06892904413900895, 0.10237206500324063]
+    size = 7
+    pop_index = [10,70,10,40,10]
+    dic_dwave = {}
+    for i in range(len(files)):
+        file = files[i]
+        fval_list = get_solution_value("best_fval", 1, file, 7)
+        fval_list = [round(fval_list[_],15)/round(optimals[i],15) for _ in range(len(fval_list))]
+        dic_dwave[file] = fval_list
+    dic_baseline = {}
+    for i in range(len(files)):
+        file = files[i]
+        fval_list = get_baseline_ga_value("Fitness Value", file, pop_index[i])
+        fval_list = [round(fval_list[_],15) / round(optimals[i],15) for _ in range(len(fval_list))]
+        dic_baseline[file] = fval_list
+    for i in range(len(files)):
+        print(files[i])
+        data1 = dic_dwave[files[i]]
+        data2 = dic_baseline[files[i]]
+        statistic, pvalue, a12_effect_size = stat_test(data1, data2)
+        print(pvalue)
+        print(a12_effect_size)
