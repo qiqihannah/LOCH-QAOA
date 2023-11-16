@@ -76,3 +76,6 @@ Similarly, you can run RS with
 ```
 python rs.py [n] [max_evaluation] [file name]
 ```
+
+## Experiment results are stored in the following link
+https://drive.google.com/file/d/1ODGVamT6xpWkgMgH3YZvYgrIO07fgXoq/view?usp=drive_link
