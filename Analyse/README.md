@@ -3,8 +3,9 @@
 
 |             | Paint Control | IOF/ROL | GSDTSR | ELEVATOR_o2 | ELEVATOR_o3 |
 |-------------|---------------|---------|--------|-------------|-------------|
-| H-statistic | 6.447         | 1.752   | 2.917  | 2.184       | 2.836       |
-| P-Value     | 0.168         | 0.781   | 0.572  | 0.702       | 0.586       |
+| H-statistic | 1.887         | 0.070   | 0.631  | 7.593       | 2.784       |
+| P-Value     | 0.757         | 0.999   | 0.960  | 0.108       | 0.595       |
+
 We use Kruskal-Wallis H Test to compare whether results obtained by LOCH-QAOA with different layers have significant difference.
 
 ### Comparison of LOCH-QAOA with various sub-problem sizes (N)
