@@ -35,5 +35,5 @@ We then use Mann-Whitney U Test as the statistical test and Vargha and Delaneyâ€
 
 |         | Paint Control | IOF/ROL | GSDTSR | ELEVATOR_o2 | ELEVATOR_o3 |
 |---------|---------------|---------|--------|-------------|-------------|
-| P-Value | 1.0           | 0.006   | 1.0    | 0.006       | 0.408       |
-| A12     | -             | -       | -      | -           | -           |
+| P-Value | 1.0           | < 1e-3   | 1.0    | <1e-3       | 0.308       |
+| A12     | -             | 0.233       | -      | 0.183           | -           |
