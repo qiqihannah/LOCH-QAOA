@@ -28,7 +28,7 @@ and vice versa.
 |         | Paint Control | IOF/ROL | GSDTSR | ELEVATOR_o2 | ELEVATOR_o3 |
 |---------|---------------|---------|--------|-------------|-------------|
 | P-Value | < 1e-3        | < 1e-3   | < 1e-3    | < 1e-3       | < 1e-3       |
-| A12     | -             | -       | -      | -           | -           |
+| A12     | 0.0             |0.0       | 0.0      | 0.0           | 0.0           |
 
 ### Comparison of LOCH-QAOA and GA
 We then use Mann-Whitney U Test as the statistical test and Vargha and Delaney’s A12 statistics as effect size. The p-values and A12 values are shown in the table below.
