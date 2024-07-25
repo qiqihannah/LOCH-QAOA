@@ -17,15 +17,15 @@ It also contains the original results reported in the paper and the analyzing co
 * Folder *Analyse* contains the code of analysing the experiments and results.
 * Experiment results in the paper are saved in [this link](https://drive.google.com/drive/folders/1zvqdwVx5RZeVq1ljI7EoywKN5bWV9BI7?usp=drive_link).
     * subfolder *LOCH-QAOA-result*: each folder under it is named by qaoa_p (i.e., layers of QAOA). which contains results of 5 case studies stored in .zip files. 
-      * The .zip files contain experiment results of all 10 runs of LOCH-QAOA with different sizes. In each run, we report results of each iteration, log information of each sub-problem and the final solution.
+      * The .zip files contain experiment results of all 30 runs of LOCH-QAOA with different sizes. In each run, we report results of each iteration, log information of each sub-problem and the final solution.
      * subfolder *Div-QAOA-result*: it contains experiment results of all 5 case studies. 
-      * The subfolders under contain experiment results of all 10 runs. We report the information of each sub-problem and their optimal solution.
+      * The subfolders under contain experiment results of all 30 runs. We report the information of each sub-problem and their optimal solution.
     * subfolder *GA-result*: it contains the experiment results of all 5 case studies. 
       * dataset_log folder contains the evolution results of each generation with various population sizes (i.e., 10, 20, 30, 40, 50, 60, 70, 80, 90, 100) and their corresponding optimal fitness values, execution time, and number of evaluations of each run (in gen_file_popsize.csv).
       * dataset.csv file contains the average results of various population sizes.
       * selected.csv file contains the average results with the optimal population sizes of each case study.
     * subfolder *RandomSearch-results*: it contains the results of all 5 case studies.
-      * The subfolders contain the experiment results of all 10 runs. We report the best recorded *fval* values eachieved in each iteration in that run.
+      * The subfolders contain the experiment results of all 30 runs. We report the best recorded *fval* values eachieved in each iteration in that run.
 
 ## Installation of running the code
 We use [Qiskit](https://qiskit.org/) as a quantum framework. We use jMetalPy to implement the classical search algorithms (i.e., GA and RandomSearch)
