@@ -13,7 +13,7 @@ It also contains the original results reported in the paper and the analyzing co
 ## Structure of the repository
 
 * Folder *Data* contains the information of 4 industrial datasets, and a small dataset extracted from Paint Control dataset , including all the test cases and their attribute values.
-* Folder *Code* contains the code of LOCH-QAOA, Div-QAOA, and two classical algorithms, random search and genetic algorithm. It also contains a Jupyter Notebook of running LOCH-QAOA with the Qiskit quantum computer on dataset Paintcontrol.
+* Folder *Code* contains the code of LOCH-QAOA (both on the noisy and ideal simulators), Div-QAOA, and two classical algorithms, random search and genetic algorithm. It also contains a Jupyter Notebook of running LOCH-QAOA with the Qiskit quantum computer on dataset Paintcontrol.
 * Folder *Analyse* contains the code of analysing the experiments and results.
 * Experiment results in the paper are saved in [this link](https://drive.google.com/drive/folders/1zvqdwVx5RZeVq1ljI7EoywKN5bWV9BI7?usp=drive_link).
     * subfolder *LOCH-QAOA-result*: each folder under it is named by qaoa_p (i.e., layers of QAOA). which contains results of 5 case studies stored in .zip files. 
